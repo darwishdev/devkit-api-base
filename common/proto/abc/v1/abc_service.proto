@@ -1,0 +1,213 @@
+syntax = "proto3";
+
+package abc.v1;
+
+import "abc/v1/accounts_customer.proto";
+import "abc/v1/accounts_entities.proto";
+import "abc/v1/accounts_owner.proto";
+import "abc/v1/accounts_role.proto";
+import "abc/v1/accounts_user.proto";
+import "abc/v1/globals.proto";
+import "abc/v1/properties_amenity.proto";
+import "abc/v1/properties_amenity_group.proto";
+import "abc/v1/properties_city.proto";
+import "abc/v1/properties_compound.proto";
+import "abc/v1/properties_entities.proto";
+import "abc/v1/properties_location.proto";
+import "abc/v1/properties_property.proto";
+import "abc/v1/properties_property_filters.proto";
+import "abc/v1/properties_property_type.proto";
+import "abc/v1/properties_reservable_unit.proto";
+import "abc/v1/public_icon.proto";
+import "abc/v1/public_setting.proto";
+import "abc/v1/public_storage.proto";
+import "abc/v1/rates_cancelation_policy.proto";
+import "abc/v1/rates_entities.proto";
+import "abc/v1/rates_inventory.proto";
+import "abc/v1/rates_rate_plan.proto";
+import "abc/v1/rates_rate_plan_type.proto";
+import "abc/v1/reservations_entities.proto";
+import "abc/v1/reservations_payment.proto";
+import "abc/v1/reservations_reservation.proto";
+
+service AbcService {
+  //public
+  //settings
+  rpc SettingsUpdate(SettingsUpdateRequest) returns (SettingsUpdateResponse) {}
+  rpc SettingsFindForUpdate(SettingsFindForUpdateRequest) returns (SettingsFindForUpdateResponse) {}
+  //icons
+  rpc IconsInputList(Empty) returns (IconsInputListResponse) {}
+
+  // images
+  rpc UploadFile(UploadFileRequest) returns (UploadFileResponse) {}
+  rpc UploadFiles(UploadFilesRequest) returns (UploadFileResponse) {}
+
+  // roles
+  rpc PermissionsList(PermissionsListRequest) returns (PermissionsListResponse) {}
+  rpc RolesList(RolesListRequest) returns (RolesListResponse) {}
+
+  rpc RoleCreate(RoleCreateRequest) returns (RoleCreateResponse) {}
+  rpc RoleUpdate(RoleUpdateRequest) returns (RoleUpdateResponse) {}
+  rpc RoleFindForUpdate(FindRequest) returns (RoleUpdateRequest) {}
+  rpc RoleDeleteRestore(DeleteRestoreRequest) returns (RoleDeleteRestoreResponse) {}
+  rpc RolesInputList(RolesInputListRequest) returns (RolesInputListResponse) {}
+
+  // users
+  rpc UserLogin(UserLoginRequest) returns (UserLoginResponse) {}
+  rpc UserAuthorize(Empty) returns (Empty) {}
+  rpc UserResetPassword(UserResetPasswordRequest) returns (Empty) {}
+  rpc UsersList(Empty) returns (UsersListResponse) {}
+  rpc UserDeleteRestore(DeleteRestoreRequest) returns (Empty) {}
+  rpc UserCreateUpdate(UserCreateUpdateRequest) returns (UserEntity) {}
+  rpc UserFindForUpdate(FindRequest) returns (UserCreateUpdateRequest) {}
+
+  // customers
+  rpc CustomerLogin(CustomerLoginRequest) returns (CustomerLoginResponse) {}
+  rpc CustomerRegister(CustomerCreateUpdateRequest) returns (CustomerLoginResponse) {}
+  rpc CustomerAuthorize(Empty) returns (CustomerLoginResponse) {}
+  rpc CustomerResetPassword(CustomerResetPasswordRequest) returns (Empty) {}
+  rpc CustomersList(Empty) returns (CustomersListResponse) {}
+  rpc CustomerDeleteRestore(DeleteRestoreRequest) returns (Empty) {}
+  rpc CustomerCreateUpdate(CustomerCreateUpdateRequest) returns (CustomerEntity) {}
+  rpc CustomerFindForUpdate(FindRequest) returns (CustomerCreateUpdateRequest) {}
+
+  // owners
+  rpc OwnersList(Empty) returns (OwnersListResponse) {}
+  rpc OwnerAuthorize(Empty) returns (OwnerLoginResponse) {}
+  rpc OwnerFind(FindRequest) returns (OwnersViewEntity) {}
+  rpc OwnerLogin(OwnerLoginRequest) returns (OwnerLoginResponse) {}
+  rpc OwnerDeleteRestore(DeleteRestoreRequest) returns (Empty) {}
+  rpc OwnerCreate(OwnerCreateRequest) returns (OwnerEntity) {}
+  rpc OwnerUpdate(OwnerUpdateRequest) returns (OwnerEntity) {}
+  rpc OwnersInputList(Empty) returns (InputListResponse) {}
+  rpc OwnerFindForUpdate(FindRequest) returns (OwnerUpdateRequest) {}
+
+  // locations
+  rpc LocationsList(Empty) returns (LocationsListResponse) {}
+  rpc LocationsInputList(Empty) returns (InputListResponse) {}
+  rpc LocationDeleteRestore(DeleteRestoreRequest) returns (LocationEntity) {}
+  rpc LocationCreate(LocationCreateRequest) returns (LocationEntity) {}
+  rpc LocationUpdate(LocationUpdateRequest) returns (LocationEntity) {}
+  rpc LocationFind(FindRequest) returns (LocationsViewEntity) {}
+  rpc LocationFindForUpdate(FindRequest) returns (LocationUpdateRequest) {}
+  // cities
+  rpc CitiesList(Empty) returns (CitiesListResponse) {}
+  rpc CitiesInputList(Empty) returns (InputListResponse) {}
+  rpc CityDeleteRestore(DeleteRestoreRequest) returns (CityEntity) {}
+  rpc CityCreate(CityCreateRequest) returns (CityEntity) {}
+  rpc CityUpdate(CityUpdateRequest) returns (CityEntity) {}
+  rpc CityFind(FindRequest) returns (CityEntity) {}
+  rpc CityFindForUpdate(FindRequest) returns (CityUpdateRequest) {}
+  // compounds
+  rpc CompoundsList(Empty) returns (CompoundsListResponse) {}
+  rpc CompoundsInputList(Empty) returns (InputListResponse) {}
+  rpc CompoundDeleteRestore(DeleteRestoreRequest) returns (CompoundEntity) {}
+  rpc CompoundCreate(CompoundCreateRequest) returns (CompoundEntity) {}
+  rpc CompoundUpdate(CompoundUpdateRequest) returns (CompoundEntity) {}
+  rpc CompoundFind(FindRequest) returns (CompoundsViewEntity) {}
+  rpc CompoundFindForUpdate(FindRequest) returns (CompoundUpdateRequest) {}
+
+  rpc AmenityGroupsList(Empty) returns (AmenityGroupsListResponse) {}
+  rpc AmenityGroupsInputList(Empty) returns (InputListResponse) {}
+
+  rpc AmenityGroupDeleteRestore(DeleteRestoreRequest) returns (AmenityGroupEntity) {}
+  rpc AmenityGroupCreate(AmenityGroupCreateRequest) returns (AmenityGroupsViewEntity) {}
+  rpc AmenityGroupAmenitiesModify(AmenityGroupAmenitiesModifyRequest) returns (AmenityGroupsViewEntity) {}
+  rpc AmenityGroupUpdate(AmenityGroupUpdateRequest) returns (AmenityGroupEntity) {}
+  rpc AmenityGroupFind(FindRequest) returns (AmenityGroupsViewEntity) {}
+  rpc UnitAmenitiesCreateUpdate(UnitAmenitiesCreateUpdateRequest) returns (UnitAmenitiesCreateUpdateResponse) {}
+
+  rpc AmenitiesList(Empty) returns (AmenitiesListResponse) {}
+  rpc AmenityValueTypesInputList(Empty) returns (InputListResponse) {}
+  rpc AmenitiesInputList(AmenitiesInputListRequest) returns (AmenitiesInputListResponse) {}
+
+  rpc AmenityDeleteRestore(DeleteRestoreRequest) returns (AmenityEntity) {}
+  rpc AmenityCreate(AmenityCreateRequest) returns (AmenityEntity) {}
+  rpc AmenityUpdate(AmenityUpdateRequest) returns (AmenityEntity) {}
+  rpc AmenityFind(FindRequest) returns (AmenitiesViewEntity) {}
+  rpc AmenityFindForUpdate(FindRequest) returns (AmenityUpdateRequest) {}
+
+  // property types
+
+  rpc PropertyTypesList(Empty) returns (PropertyTypesListResponse) {}
+  rpc PropertyTypesInputList(FindRequest) returns (InputListResponse) {}
+  rpc PropertyTypeDeleteRestore(DeleteRestoreRequest) returns (PropertyTypeEntity) {}
+  rpc PropertyTypeCreate(PropertyTypeCreateRequest) returns (PropertyTypeEntity) {}
+  rpc PropertyTypeUpdate(PropertyTypeUpdateRequest) returns (PropertyTypeEntity) {}
+  rpc PropertyTypeFind(FindRequest) returns (PropertyTypesViewEntity) {}
+  rpc PropertyTypeFindForUpdate(FindRequest) returns (PropertyTypeUpdateRequest) {}
+  // properties
+  rpc PropertyCategoriesInputList(Empty) returns (InputListResponse) {}
+  rpc PropertyDeleteRestore(DeleteRestoreRequest) returns (PropertyEntity) {}
+  rpc PropertyDelete(DeleteRestoreRequest) returns (PropertyEntity) {}
+  rpc PropertyCreateUpdate(PropertyCreateUpdateRequest) returns (PropertiesViewEntity) {}
+  rpc PropertiesList(PropertiesListRequest) returns (PropertiesListResponse) {}
+  rpc PropertiesInputList(FindRequest) returns (InputWithGroupListResponse) {}
+  rpc PropertiesInputListFlat(Empty) returns (InputListResponse) {}
+  rpc PropertyFindForUpdate(FindRequest) returns (PropertyFindForUpdateResponse) {}
+  rpc PropertyFind(FindRequest) returns (PropertyFindResponse) {}
+  rpc PropertiesListFiltered(PropertiesListFilteredRequest) returns (PropertiesListFilteredResponse) {}
+  rpc PropertiesListWithFilters(PropertiesListFilteredRequest) returns (PropertiesListWithFiltersResponse) {}
+  rpc PropertyFindFiltered(PropertyFindFilteredRequest) returns (PropertyFindFilteredResponse) {}
+  rpc ReservableUnitFindFiltered(ReservableUnitFindFilteredRequest) returns (ReservableUnitFindFilteredResponse) {}
+  rpc TaxTemplatesList(Empty) returns (TaxTemplatesListResponse) {}
+
+  // reservable units
+  rpc ReservableUnitCreateUpdate(ReservableUnitCreateUpdateRequest) returns (ReservableUnitsViewEntity) {}
+  rpc ReservableUnitFindForUpdate(FindRequest) returns (ReservableUnitsViewEntity) {}
+  rpc ReservableUnitTypesInputList(FindRequest) returns (ReservableUnitTypeInputListResponse) {}
+  rpc ReservableUnitsList(ReservableUnitsListRequest) returns (ReservableUnitsListResponse) {}
+  rpc ReservableUnitFind(FindRequest) returns (ReservableUnitsViewEntity) {}
+  // rpc ReservableUnitFindFiltered(ReservableUnitFindFilteredRequest) returns (ReservableUnitsViewEntity) {}
+  rpc ReservableUnitDelete(DeleteRestoreRequest) returns (ReservableUnitDeleteResponse) {}
+  rpc ReservableUnitDeleteRestore(DeleteRestoreRequest) returns (ReservableUnitDeleteResponse) {}
+  // find request here is property id
+  rpc ReservableUnitsInputList(FindRequest) returns (InputListResponse) {}
+
+  rpc BedTypesInputList(Empty) returns (InputListResponse) {}
+  rpc ReservableUnitRoomBedsCreateUpdate(ReservableUnitRoomBedsCreateUpdateRequest) returns (ReservableUnitRoomBedsCreateUpdateResponse) {}
+
+  // reates
+  rpc CancelationPolicyDeleteRestore(DeleteRestoreRequest) returns (CancelationPolicyEntity) {}
+  rpc CancelationPolicyDelete(DeleteRestoreRequest) returns (CancelationPolicyEntity) {}
+  rpc CancelationPolicyCreateUpdate(CancelationPolicyCreateUpdateRequest) returns (CancelationPolicyEntity) {}
+  rpc CancelationPoliciesList(Empty) returns (CancelationPoliciesListResponse) {}
+  rpc CancelationPoliciesInputList(Empty) returns (InputListResponse) {}
+  rpc CancelationPolicyFindForUpdate(FindRequest) returns (CancelationPolicyCreateUpdateRequest) {}
+  rpc CancelationPolicyFind(FindRequest) returns (CancelationPolicyFindResponse) {}
+  // rate  plan types
+  rpc RatePlanTypeDeleteRestore(DeleteRestoreRequest) returns (RatePlanTypeEntity) {}
+  rpc RatePlanTypeDelete(DeleteRestoreRequest) returns (RatePlanTypeEntity) {}
+  rpc RatePlanTypeCreateUpdate(RatePlanTypeCreateUpdateRequest) returns (RatePlanTypeEntity) {}
+  rpc RatePlanTypesList(Empty) returns (RatePlanTypesListResponse) {}
+  rpc RatePlanTypesInputList(Empty) returns (InputListResponse) {}
+  rpc RatePlanTypeFindForUpdate(FindRequest) returns (RatePlanTypeCreateUpdateRequest) {}
+  rpc RatePlanTypeFind(FindRequest) returns (RatePlanTypeFindResponse) {}
+
+  rpc RatePlanDeleteRestore(DeleteRestoreRequest) returns (RatePlanEntity) {}
+  rpc RatePlanDelete(DeleteRestoreRequest) returns (RatePlanEntity) {}
+  rpc RatePlanCreateUpdate(RatePlanCreateUpdateRequest) returns (RatePlanEntity) {}
+  rpc RatePlansList(Empty) returns (RatePlansListResponse) {}
+  rpc RatePlansInputList(FindRequest) returns (InputListResponse) {}
+  rpc RatePlanFindForUpdate(FindRequest) returns (RatePlanCreateUpdateRequest) {}
+  rpc RatePlanFind(FindRequest) returns (RatePlanFindResponse) {}
+
+  // inventory
+  rpc InventoryCreateUpdate(InventoryCreateUpdateRequest) returns (InventoryCreateUpdateResponse) {}
+  rpc InventoryResize(InventoryResizeRequest) returns (InventoryResizeResponse) {}
+  rpc InventoryList(InventoryListRequest) returns (InventoryListResponse) {}
+  rpc InventoryResourcesList(InventoryResourcesListRequest) returns (InventoryResourcesListResponse) {}
+  // reservations
+  rpc ReservationCreate(ReservationCreateRequest) returns (ReservationsViewEntity) {}
+  rpc ReservationUpdateStatus(ReservationUpdateStatusRequest) returns (ReservationsViewEntity) {}
+  rpc ReservationsList(Empty) returns (ReservationsListResponse) {}
+  rpc ReservationsInputList(Empty) returns (InputListResponse) {}
+  rpc ReservationStatusesInputList(Empty) returns (InputListResponse) {}
+
+  // reservations
+  rpc PaymentCreate(PaymentCreateRequest) returns (PaymentsViewEntity) {}
+  rpc PaymentUpdateStatus(PaymentUpdateStatusRequest) returns (PaymentsViewEntity) {}
+  rpc PaymentsList(Empty) returns (PaymentsListResponse) {}
+  rpc PaymentMethodsInputList(Empty) returns (PaymentMethodsInputListResponse) {}
+  rpc PaymentStatusesInputList(Empty) returns (InputListResponse) {}
+}

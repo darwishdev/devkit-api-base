@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package abc.v1;
+
+import "abc/v1/client.proto";
+
+message Empty {}
+message FindRequest {
+  int32 record_id = 1;
+}
+message DeleteRestoreRequest {
+  repeated int32 records = 1;
+}
+
+message InputListResponse {
+  repeated SelectInputOption options = 1;
+}
+
+message InputWithGroupListResponse {
+  repeated SelectInputOptionWithGroup options = 1;
+}

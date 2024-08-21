@@ -1,0 +1,17 @@
+version: v1
+managed:
+  enabled: true
+  go_package_prefix:
+    default: github.com/darwishdev/devkit-api-base/common/pb
+    except:
+      - buf.build/bufbuild/protovalidate
+
+plugins:
+  - name: go
+    out: common/pb
+    opt: paths=source_relative
+  - name: connect-go
+    out: common/pb
+    opt: paths=source_relative
+  - plugin: buf.build/grpc-ecosystem/openapiv2:v2.20.0
+    out: gen

@@ -1,0 +1,94 @@
+syntax = "proto3";
+
+package abc.v1;
+
+import "abc/v1/properties_entities.proto";
+message OwnerEntity {
+  int32 owner_id = 1;
+  string owner_name = 2;
+  string owner_image = 3;
+  string owner_email = 4;
+  string owner_phone = 5;
+  string owner_national_id = 6;
+  string created_at = 7;
+  string updated_at = 8;
+  string deleted_at = 9;
+}
+message OwnersViewEntity {
+  int32 owner_id = 1;
+  string owner_name = 2;
+  string owner_image = 3;
+  string owner_email = 4;
+  string owner_phone = 5;
+  string owner_national_id = 6;
+  string created_at = 7;
+  string updated_at = 8;
+  string deleted_at = 9;
+  repeated PropertiesViewEntity properties = 10;
+}
+message PermissionEntity {
+  int32 permission_id = 1;
+  string permission_function = 2; // Unique
+  string permission_name = 3;
+  string permission_description = 4;
+  string permission_group = 5; // Not null
+}
+message RoleEntity {
+  int32 role_id = 1;
+  string role_name = 2; // Unique
+  string role_description = 3;
+  string created_at = 4;
+  string updated_at = 5;
+  string deleted_at = 6;
+}
+message RolePermissionEntity {
+  int32 role_permission_id = 1;
+  int32 role_id = 2;
+  int32 permission_id = 3;
+}
+message UserEntity {
+  int32 user_id = 1;
+  string user_name = 2;
+  string user_image = 3;
+  string user_email = 4; // Unique
+  string user_phone = 5; // Unique
+  string user_password = 6;
+  bool prevent_delete = 10;
+  bool prevent_update = 11;
+  string created_at = 7;
+  string updated_at = 8;
+  string deleted_at = 9;
+}
+
+message CustomerEntity {
+  int32 customer_id = 1;
+  string customer_name = 2;
+  string customer_code = 3;
+  string customer_image = 4;
+  string birthdate = 12;
+  string customer_email = 5; // Unique
+  string customer_phone = 6; // Unique
+  string customer_password = 7;
+  string customer_national_id = 8;
+  string created_at = 9;
+  string updated_at = 10;
+  string deleted_at = 11;
+}
+message UserRoleEntity {
+  int32 user_id = 1;
+  int32 role_id = 2;
+}
+message UserPermissionEntity {
+  int32 user_id = 1;
+  int32 permission_id = 2;
+}
+
+message NavigationBarEntity {
+  int32 navigation_bar_id = 1;
+  string menu_key = 2;
+  string label = 3;
+  int32 icon_id = 4;
+  string route = 5;
+  int32 parent_id = 6;
+  int32 permission_id = 7;
+}

@@ -1,0 +1,105 @@
+syntax = "proto3";
+
+package abc.v1;
+
+import "abc/v1/client.proto";
+import "buf/validate/validate.proto";
+
+message Role {
+  int32 role_id = 1;
+  string role_name = 2;
+  string role_description = 3;
+  string created_at = 4;
+  string deleted_at = 5;
+}
+
+message PermissionsListRequest {}
+
+message Permission {
+  int32 permission_id = 1;
+  string permission_name = 2;
+  string permission_function = 3;
+  string permission_description = 4;
+}
+
+message PermissionGroup {
+  string permission_group = 1;
+  repeated Permission permissions = 2;
+}
+message PermissionsListResponse {
+  repeated PermissionGroup records = 1;
+}
+
+message RoleCreateRequest {
+  string role_name = 2 [(buf.validate.field).cel = {
+    message: "role_name_min_2_max_200",
+    expression: "uint(this.size()) > 2 && uint(this.size()) < 200"
+  }];
+  string role_description = 3 [(buf.validate.field).cel = {
+    message: "role_description_max_200",
+    expression: "uint(this.size()) < 200"
+  }];
+  repeated int32 permissions = 4 [(buf.validate.field).repeated = {
+    unique: true,
+    max_items: 200,
+  }];
+}
+
+message RoleCreateResponse {
+  Role role = 1;
+}
+
+message RoleUpdateRequest {
+  int32 role_id = 1;
+  string role_name = 2 [(buf.validate.field).cel = {
+    message: "role_name_min_2_max_200",
+    expression: "uint(this.size()) > 2 && uint(this.size()) < 200"
+  }];
+  string role_description = 3 [(buf.validate.field).cel = {
+    message: "role_description_max_200",
+    expression: "uint(this.size()) < 200"
+  }];
+  repeated int32 permissions = 4 [(buf.validate.field).repeated = {
+    unique: true,
+    max_items: 200,
+  }];
+}
+
+message RoleUpdateResponse {
+  Role role = 1;
+}
+
+message RoleFindForUpdateRequest {
+  int32 role_id = 1 [(buf.validate.field).cel = {
+    message: "role_id_min_1",
+    expression: "uint(this.size()) > 0"
+  }];
+}
+
+message RolesListRequest {}
+message RolesListRow {
+  int32 role_id = 1;
+  string role_name = 2;
+  string role_description = 3;
+  int32 permissions_count = 4;
+  int32 users_count = 5;
+  bool prevent_delete = 9;
+  bool prevent_update = 10;
+  string created_at = 7;
+  string deleted_at = 8;
+}
+message RolesListResponse {
+  ListDataOptions options = 1;
+  repeated RolesListRow records = 2;
+  repeated RolesListRow deleted_records = 3;
+}
+
+message RoleDeleteRestoreRequest {
+  repeated int32 role_ids = 1;
+}
+message RoleDeleteRestoreResponse {}
+
+message RolesInputListRequest {}
+message RolesInputListResponse {
+  repeated SelectInputOption options = 1;
+}

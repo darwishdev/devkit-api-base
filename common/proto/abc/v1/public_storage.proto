@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package abc.v1;
+
+import "buf/validate/validate.proto";
+
+message UploadFileRequest {
+  string path = 1;
+  string bucket_name = 2;
+  bytes reader = 3;
+  string file_type = 4;
+}
+message UploadFilesRequest {
+  repeated UploadFileRequest files = 1;
+}
+
+message UploadFileResponse {
+  string path = 1;
+}

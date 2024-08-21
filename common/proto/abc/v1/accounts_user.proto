@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+package abc.v1;
+
+import "abc/v1/accounts_entities.proto";
+import "abc/v1/client.proto";
+import "buf/validate/validate.proto";
+
+message UserLoginRequest {
+  string login_code = 1;
+  string user_password = 2;
+}
+message SideBarItem {
+  string key = 1;
+  string label = 2;
+  string label_ar = 3;
+  int32 icon_id = 4;
+  string route = 5;
+  repeated SideBarItem items = 6;
+}
+message LoginInfo {
+  string access_token = 1;
+  string access_token_expires_at = 4;
+}
+message UserRole {
+  int32 role_id = 1;
+  string role_name = 2;
+}
+message UserLoginResponse {
+  UserEntity user = 1;
+  LoginInfo login_info = 2;
+  repeated UserRole roles = 3;
+  repeated SideBarItem side_bar = 4;
+}
+
+message UserResetPasswordRequest {
+  string user_email = 1;
+  string user_password = 2;
+}
+message UsersListResponse {
+  ListDataOptions options = 1;
+  repeated UserEntity records = 2;
+  repeated UserEntity deleted_records = 3;
+}
+message UserDeleteRestoreRequest {
+  repeated int32 records = 1;
+}
+
+message UserCreateUpdateRequest {
+  int32 user_id = 1 [(buf.validate.field).int32.gt = 0];
+  string user_name = 2 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 200
+  ];
+
+  string user_email = 3 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 200
+  ];
+  string user_code = 4 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 200
+  ];
+  string user_phone = 5 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 200
+  ];
+  string user_image = 6 [(buf.validate.field).string.max_len = 200];
+  string user_password = 7;
+  repeated int32 roles = 8 [(buf.validate.field).repeated = {
+    unique: true,
+    max_items: 200,
+  }];
+  repeated int32 permissions = 9 [(buf.validate.field).repeated = {
+    unique: true,
+    max_items: 200,
+  }];
+}

@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package abc.v1;
+
+import "abc/v1/accounts_entities.proto";
+import "abc/v1/accounts_user.proto";
+import "abc/v1/client.proto";
+import "buf/validate/validate.proto";
+
+message OwnerLoginRequest {
+  string owner_email_or_code = 1;
+  string owner_password = 2;
+}
+
+message OwnerLoginResponse {
+  OwnersViewEntity owner = 1;
+  LoginInfo login_info = 2;
+}
+
+message OwnerResetPasswordRequest {
+  string owner_email = 1;
+  string owner_password = 2;
+}
+message OwnersListResponse {
+  ListDataOptions options = 1;
+  repeated OwnerEntity records = 2;
+  repeated OwnerEntity deleted_records = 3;
+}
+message OwnerCreateRequest {
+  string owner_name = 1;
+  string owner_image = 2;
+  string owner_email = 4;
+  string owner_phone = 5;
+  string owner_password = 6;
+  string owner_national_id = 7;
+  int32 representative_owner_id = 8;
+}
+message OwnerUpdateRequest {
+  int32 owner_id = 1;
+  string owner_name = 3;
+  string owner_image = 4;
+  string owner_email = 5;
+  string owner_phone = 6;
+  string owner_password = 7;
+  string owner_national_id = 8;
+  int32 representative_owner_id = 9;
+}

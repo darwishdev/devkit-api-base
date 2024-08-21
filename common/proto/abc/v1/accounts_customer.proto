@@ -1,0 +1,126 @@
+syntax = "proto3";
+
+package abc.v1;
+
+import "abc/v1/accounts_entities.proto";
+import "abc/v1/accounts_user.proto";
+import "abc/v1/client.proto";
+import "abc/v1/properties_property_filters.proto";
+import "abc/v1/reservations_entities.proto";
+import "buf/validate/validate.proto";
+
+message CustomerLoginRequest {
+  string login_code = 1;
+  string customer_password = 2;
+}
+
+// message CustomerReservationUnit {
+//   int32 quantity = 1;
+//   PropertyFindFilteredReservableUnit unit = 2;
+// }
+// message CustomerReservation {
+//   int32 adults = 1;
+//   string date_to = 2;
+//   int32 children = 3;
+//   int32 owner_id = 4;
+//   float subtotal = 5;
+//   string date_from = 6;
+//   float total_tax = 7;
+//   string created_at = 8;
+//   int32 date_to_id = 9;
+//   string deleted_at = 10;
+//   string owner_name = 11;
+//   string updated_at = 12;
+//   int32 customer_id = 13;
+//   float paid_amount = 14;
+//   int32 property_id = 15;
+//   int32 date_from_id = 16;
+//   string customer_name = 17;
+//   string representative_owner_name = 18;
+//   string property_name = 19;
+//   int32 reservation_id = 20;
+//   float cancelation_fee = 21;
+//   string reservation_code = 22;
+//   string reservation_status = 23;
+//   string customer_national_id = 24;
+//   int32 reservation_status_id = 25;
+//   int32 representative_owner_id = 26;
+//   string representative_owner_email = 27;
+//   repeated PropertyFindFilteredReservableUnit details = 28;
+// }
+
+// message CustomerOngoingReservation {
+//   int32 adults = 1;
+//   string date_to = 2;
+//   int32 children = 3;
+//   int32 owner_id = 4;
+//   float subtotal = 5;
+//   string date_from = 6;
+//   float total_tax = 7;
+//   string created_at = 8;
+//   int32 date_to_id = 9;
+//   string deleted_at = 10;
+//   string owner_name = 11;
+//   string updated_at = 12;
+//   int32 customer_id = 13;
+//   float paid_amount = 14;
+//   int32 property_id = 15;
+//   int32 date_from_id = 16;
+//   string customer_name = 17;
+//   string representative_owner_name = 18;
+//   string property_name = 19;
+//   int32 reservation_id = 20;
+//   float cancelation_fee = 21;
+//   string reservation_code = 22;
+//   string reservation_status = 23;
+//   string customer_national_id = 24;
+//   int32 reservation_status_id = 25;
+//   int32 representative_owner_id = 26;
+//   string representative_owner_email = 27;
+//   repeated CustomerReservationUnit units = 29;
+// }
+
+// message CustomerReservationItem {
+//   int32 quantity = 1;
+//   string customer_password = 2;
+// }
+message CustomerLoginResponse {
+  CustomerEntity customer = 1;
+  ReservationsViewEntity ongoing_reservation = 2;
+  PaymentEntity ongoing_payment = 3;
+  repeated ReservationsViewEntity reservations = 4;
+  LoginInfo login_info = 5;
+}
+
+message CustomerResetPasswordRequest {
+  string customer_email = 1;
+  string customer_password = 2;
+}
+message CustomersListResponse {
+  ListDataOptions options = 1;
+  repeated CustomerEntity records = 2;
+  repeated CustomerEntity deleted_records = 3;
+}
+message CustomerCreateUpdateRequest {
+  int32 customer_id = 1;
+  string customer_name = 2 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 200
+  ];
+
+  string customer_email = 3 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 200
+  ];
+
+  string birthdate = 9;
+
+  string customer_phone = 5 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 200
+  ];
+
+  string customer_image = 6 [(buf.validate.field).string.max_len = 200];
+  string customer_password = 7;
+  string customer_national_id = 8 [(buf.validate.field).string.max_len = 30];
+}

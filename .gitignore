@@ -1,0 +1,15 @@
+
+static
+config/dev.env
+config/prod.env
+config/state.env 
+common/pb/abc/v1/*
+common/db/gen/*.sql.go
+common/db/gen/copyfrom.go
+common/db/gen/models.go
+common/db/gen/querier.go
+common/db/gen/db.go
+/tmp
+/bin
+go.sum
+

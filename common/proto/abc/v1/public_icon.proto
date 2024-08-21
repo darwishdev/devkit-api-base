@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package abc.v1;
+
+import "buf/validate/validate.proto";
+
+message IconsInputListRow {
+  int32 icon_id = 1;
+  string icon_name = 2;
+  string icon_content = 3;
+}
+
+message IconsInputListResponse {
+  repeated IconsInputListRow icons = 1;
+}

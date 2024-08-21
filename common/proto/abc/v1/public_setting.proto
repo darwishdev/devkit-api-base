@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package abc.v1;
+
+import "buf/validate/validate.proto";
+
+message Setting {
+  string setting_key = 1;
+  string setting_value = 2;
+  string setting_type = 3;
+}
+
+message SettingsFindForUpdateRequest {}
+
+message SettingsUpdateRequestRow {
+  string setting_key = 1 [(buf.validate.field).cel = {
+    message: "setting_value_min_1_max_200",
+    expression: "uint(this.size()) > 1 && uint(this.size()) < 200"
+  }];
+  string setting_value = 2 [(buf.validate.field).cel = {
+    message: "setting_value_min_1",
+    expression: "uint(this.size()) > 1"
+  }];
+}
+
+message SettingsUpdateRequest {
+  repeated SettingsUpdateRequestRow settings = 1;
+}
+
+message SettingsFindForUpdateRow {
+  string setting_key = 1;
+  string setting_value = 2;
+  string setting_type = 3;
+}
+message SettingsFindForUpdateResponse {
+  repeated SettingsFindForUpdateRow settings = 1;
+}
+message SettingsUpdateResponse {}

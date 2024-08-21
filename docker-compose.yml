@@ -1,0 +1,24 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: abc_api
+    volumes:
+      - ./config:/app/config
+    image: abc_api
+    ports:
+      - 9091:9091
+    entrypoint:
+      [
+        "/app/wait-for.sh",
+        "postgres:5432",
+        "--",
+        "/app/start.sh"
+      ]
+    command: [ "/app/main" ]
+
+networks:
+  default:
+    name: postgres_network
+    external: true

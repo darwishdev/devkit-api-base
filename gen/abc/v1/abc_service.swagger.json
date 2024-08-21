@@ -1,0 +1,4376 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "abc/v1/abc_service.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "AbcService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {},
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v1AmenitiesInputListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1AmenityGroup"
+          }
+        }
+      }
+    },
+    "v1AmenitiesListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "#/definitions/v1ListDataOptions"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1AmenitiesViewEntity"
+          }
+        },
+        "deletedRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1AmenitiesViewEntity"
+          }
+        }
+      }
+    },
+    "v1AmenitiesViewEntity": {
+      "type": "object",
+      "properties": {
+        "amenityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amenityGroupId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amenityGroupName": {
+          "type": "string"
+        },
+        "amenityGroupIcon": {
+          "type": "string"
+        },
+        "amenityName": {
+          "type": "string"
+        },
+        "amenityIcon": {
+          "type": "string"
+        },
+        "amenityValueTypeId": {
+          "type": "string"
+        },
+        "amenityValueType": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Amenity": {
+      "type": "object",
+      "properties": {
+        "amenityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amenityName": {
+          "type": "string"
+        },
+        "propertyCategoryId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amenityValueType": {
+          "type": "string"
+        },
+        "amenityValue": {
+          "type": "string"
+        },
+        "amenityIcon": {
+          "type": "string"
+        }
+      }
+    },
+    "v1AmenityCreateRequest": {
+      "type": "object",
+      "properties": {
+        "amenityGroupId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amenityName": {
+          "type": "string"
+        },
+        "amenityIcon": {
+          "type": "string"
+        },
+        "amenityValueTypeId": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1AmenityEntity": {
+      "type": "object",
+      "properties": {
+        "amenityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amenityGroupId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amenityName": {
+          "type": "string"
+        },
+        "amenityIcon": {
+          "type": "string",
+          "title": "Assuming Text maps to string in Protobuf"
+        },
+        "amenityValueTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "createdAt": {
+          "type": "string",
+          "title": "Using appropriate Protobuf type"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "v1AmenityGroup": {
+      "type": "object",
+      "properties": {
+        "groupName": {
+          "type": "string"
+        },
+        "groupIcon": {
+          "type": "string"
+        },
+        "amenities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Amenity"
+          }
+        }
+      }
+    },
+    "v1AmenityGroupEntity": {
+      "type": "object",
+      "properties": {
+        "amenityGroupId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amenityGroupName": {
+          "type": "string"
+        },
+        "amenityGroupIcon": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "v1AmenityGroupsListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "#/definitions/v1ListDataOptions"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1AmenityGroupEntity"
+          }
+        },
+        "deletedRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1AmenityGroupEntity"
+          }
+        }
+      }
+    },
+    "v1AmenityGroupsViewEntity": {
+      "type": "object",
+      "properties": {
+        "amenityGroupId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amenityGroupName": {
+          "type": "string"
+        },
+        "amenityGroupIcon": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        },
+        "amenities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1AmenityEntity"
+          }
+        }
+      }
+    },
+    "v1AmenityUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "amenityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amenityGroupId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amenityName": {
+          "type": "string"
+        },
+        "amenityIcon": {
+          "type": "string"
+        },
+        "amenityValueTypeId": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1CancelationPoliciesListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "#/definitions/v1ListDataOptions"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1CancelationPolicyEntity"
+          }
+        },
+        "deletedRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1CancelationPolicyEntity"
+          }
+        }
+      }
+    },
+    "v1CancelationPolicyCreateUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "cancelationPolicyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cancelationPolicyName": {
+          "type": "string"
+        },
+        "daysBeforeCancel": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isCancelationFeePercent": {
+          "type": "boolean"
+        },
+        "cancelationFee": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "v1CancelationPolicyEntity": {
+      "type": "object",
+      "properties": {
+        "cancelationPolicyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cancelationPolicyName": {
+          "type": "string"
+        },
+        "daysBeforeCancel": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isCancelationFeePercent": {
+          "type": "boolean"
+        },
+        "cancelationFee": {
+          "type": "number",
+          "format": "float"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "title": "cancelation Policy message"
+    },
+    "v1CancelationPolicyFindResponse": {
+      "type": "object",
+      "properties": {
+        "cancelationPolicyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cancelationPolicyName": {
+          "type": "string"
+        },
+        "daysBeforeCancel": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isCancelationFeePercent": {
+          "type": "boolean"
+        },
+        "cancelationFee": {
+          "type": "number",
+          "format": "float"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "ratePlanTypes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1CancelationPolicyFindResponseRatePlanType"
+          }
+        },
+        "ratePlans": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1CancelationPolicyFindResponseRatePlan"
+          }
+        }
+      }
+    },
+    "v1CancelationPolicyFindResponseRatePlan": {
+      "type": "object",
+      "properties": {
+        "ratePlanId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ratePlanName": {
+          "type": "string"
+        }
+      }
+    },
+    "v1CancelationPolicyFindResponseRatePlanType": {
+      "type": "object",
+      "properties": {
+        "ratePlanTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ratePlanTypeName": {
+          "type": "string"
+        }
+      }
+    },
+    "v1CitiesListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "#/definitions/v1ListDataOptions"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1CityEntity"
+          }
+        },
+        "deletedRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1CityEntity"
+          }
+        }
+      }
+    },
+    "v1CityEntity": {
+      "type": "object",
+      "properties": {
+        "cityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cityName": {
+          "type": "string"
+        },
+        "cityImage": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "v1CityUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "cityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cityName": {
+          "type": "string"
+        },
+        "cityImage": {
+          "type": "string"
+        }
+      }
+    },
+    "v1CompoundEntity": {
+      "type": "object",
+      "properties": {
+        "compoundId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "compoundName": {
+          "type": "string"
+        },
+        "compoundImage": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "v1CompoundUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "compoundId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "compoundName": {
+          "type": "string"
+        },
+        "compoundImage": {
+          "type": "string"
+        }
+      }
+    },
+    "v1CompoundsListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "#/definitions/v1ListDataOptions"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1CompoundEntity"
+          }
+        },
+        "deletedRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1CompoundEntity"
+          }
+        }
+      }
+    },
+    "v1CompoundsViewEntity": {
+      "type": "object",
+      "properties": {
+        "compoundId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "compoundName": {
+          "type": "string"
+        },
+        "compoundImage": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        },
+        "propertiesCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "properties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertiesViewEntity"
+          }
+        }
+      }
+    },
+    "v1CreateHandler": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "redirectRoute": {
+          "type": "string"
+        },
+        "redirectRouteParam": {
+          "$ref": "#/definitions/v1RedirectRouteParam"
+        },
+        "routeName": {
+          "type": "string"
+        },
+        "routeQuery": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1RouteQuery"
+          }
+        },
+        "endpoint": {
+          "type": "string"
+        },
+        "updateParamName": {
+          "type": "string"
+        },
+        "paramPropertyName": {
+          "type": "string"
+        }
+      }
+    },
+    "v1CustomerCreateUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "customerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "customerName": {
+          "type": "string"
+        },
+        "customerEmail": {
+          "type": "string"
+        },
+        "birthdate": {
+          "type": "string"
+        },
+        "customerPhone": {
+          "type": "string"
+        },
+        "customerImage": {
+          "type": "string"
+        },
+        "customerPassword": {
+          "type": "string"
+        },
+        "customerNationalId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1CustomerEntity": {
+      "type": "object",
+      "properties": {
+        "customerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "customerName": {
+          "type": "string"
+        },
+        "customerCode": {
+          "type": "string"
+        },
+        "customerImage": {
+          "type": "string"
+        },
+        "birthdate": {
+          "type": "string"
+        },
+        "customerEmail": {
+          "type": "string",
+          "title": "Unique"
+        },
+        "customerPhone": {
+          "type": "string",
+          "title": "Unique"
+        },
+        "customerPassword": {
+          "type": "string"
+        },
+        "customerNationalId": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "v1CustomerLoginResponse": {
+      "type": "object",
+      "properties": {
+        "customer": {
+          "$ref": "#/definitions/v1CustomerEntity"
+        },
+        "ongoingReservation": {
+          "$ref": "#/definitions/v1ReservationsViewEntity"
+        },
+        "ongoingPayment": {
+          "$ref": "#/definitions/v1PaymentEntity"
+        },
+        "reservations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ReservationsViewEntity"
+          }
+        },
+        "loginInfo": {
+          "$ref": "#/definitions/v1LoginInfo"
+        }
+      },
+      "title": "message CustomerReservationItem {\n  int32 quantity = 1;\n  string customer_password = 2;\n}"
+    },
+    "v1CustomersListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "#/definitions/v1ListDataOptions"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1CustomerEntity"
+          }
+        },
+        "deletedRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1CustomerEntity"
+          }
+        }
+      }
+    },
+    "v1DeleteRestoreHandler": {
+      "type": "object",
+      "properties": {
+        "endpoint": {
+          "type": "string"
+        },
+        "requestProperty": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Empty": {
+      "type": "object"
+    },
+    "v1IconsInputListResponse": {
+      "type": "object",
+      "properties": {
+        "icons": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1IconsInputListRow"
+          }
+        }
+      }
+    },
+    "v1IconsInputListRow": {
+      "type": "object",
+      "properties": {
+        "iconId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "iconName": {
+          "type": "string"
+        },
+        "iconContent": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ImportHandler": {
+      "type": "object",
+      "properties": {
+        "endpoint": {
+          "type": "string"
+        },
+        "importTemplateLink": {
+          "type": "string"
+        }
+      }
+    },
+    "v1InputListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1SelectInputOption"
+          }
+        }
+      }
+    },
+    "v1InputWithGroupListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1SelectInputOptionWithGroup"
+          }
+        }
+      }
+    },
+    "v1InventoryCreateUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1InventoryEntity"
+          }
+        }
+      }
+    },
+    "v1InventoryEntity": {
+      "type": "object",
+      "properties": {
+        "inventoryId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservableUnitId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ratePlanId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "availableCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "dateId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "v1InventoryListResourceRow": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "reservable unit id converted to string to match fullcalender npm package requirment"
+        },
+        "reservableUnitName": {
+          "type": "string"
+        },
+        "propertyName": {
+          "type": "string"
+        },
+        "minimumGuestsNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maximumGuestsNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyCategoryId": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1InventoryListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "#/definitions/v1ListDataOptions"
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1InventoryListResourceRow"
+          }
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1InventoryListRow"
+          }
+        }
+      }
+    },
+    "v1InventoryListRow": {
+      "type": "object",
+      "properties": {
+        "inventoryId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "resourceId": {
+          "type": "string",
+          "title": "reservable unit id converted to string to match fullcalender npm package requirment"
+        },
+        "ratePlanId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "title": {
+          "type": "string",
+          "title": "rate plan name converted to title to match fullcalender npm package requirment"
+        },
+        "color": {
+          "type": "string"
+        },
+        "isCheckoutDisabled": {
+          "type": "boolean"
+        },
+        "isCheckinDisabled": {
+          "type": "boolean"
+        },
+        "dateFromId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "availableCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "dateToId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "start": {
+          "type": "string"
+        },
+        "end": {
+          "type": "string"
+        },
+        "minimumGuestsNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maximumGuestsNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyCategoryId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "prices": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "float"
+          }
+        }
+      }
+    },
+    "v1InventoryResizeResponse": {
+      "type": "object",
+      "properties": {
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1InventoryEntity"
+          }
+        }
+      }
+    },
+    "v1InventoryResourcesListResponse": {
+      "type": "object",
+      "properties": {
+        "resources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1InventoryListResourceRow"
+          }
+        }
+      }
+    },
+    "v1ListDataOptions": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "createHandler": {
+          "$ref": "#/definitions/v1CreateHandler"
+        },
+        "updateHandler": {
+          "$ref": "#/definitions/v1UpdateHandler"
+        },
+        "deleteRestoreHandler": {
+          "$ref": "#/definitions/v1DeleteRestoreHandler"
+        },
+        "importHandler": {
+          "$ref": "#/definitions/v1ImportHandler"
+        }
+      }
+    },
+    "v1LocationEntity": {
+      "type": "object",
+      "properties": {
+        "locationId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "locationName": {
+          "type": "string"
+        },
+        "locationImage": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "v1LocationUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "locationId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "locationName": {
+          "type": "string"
+        },
+        "locationImage": {
+          "type": "string"
+        }
+      }
+    },
+    "v1LocationsListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "#/definitions/v1ListDataOptions"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1LocationEntity"
+          }
+        },
+        "deletedRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1LocationEntity"
+          }
+        }
+      }
+    },
+    "v1LocationsViewEntity": {
+      "type": "object",
+      "properties": {
+        "locationId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cityName": {
+          "type": "string"
+        },
+        "locationName": {
+          "type": "string"
+        },
+        "locationImage": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        },
+        "propertiesCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "properties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertiesViewEntity"
+          }
+        }
+      }
+    },
+    "v1LoginInfo": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "accessTokenExpiresAt": {
+          "type": "string"
+        }
+      }
+    },
+    "v1OwnerEntity": {
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ownerName": {
+          "type": "string"
+        },
+        "ownerImage": {
+          "type": "string"
+        },
+        "ownerEmail": {
+          "type": "string"
+        },
+        "ownerPhone": {
+          "type": "string"
+        },
+        "ownerNationalId": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "v1OwnerLoginResponse": {
+      "type": "object",
+      "properties": {
+        "owner": {
+          "$ref": "#/definitions/v1OwnersViewEntity"
+        },
+        "loginInfo": {
+          "$ref": "#/definitions/v1LoginInfo"
+        }
+      }
+    },
+    "v1OwnerUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ownerName": {
+          "type": "string"
+        },
+        "ownerImage": {
+          "type": "string"
+        },
+        "ownerEmail": {
+          "type": "string"
+        },
+        "ownerPhone": {
+          "type": "string"
+        },
+        "ownerPassword": {
+          "type": "string"
+        },
+        "ownerNationalId": {
+          "type": "string"
+        },
+        "representativeOwnerId": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1OwnersListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "#/definitions/v1ListDataOptions"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1OwnerEntity"
+          }
+        },
+        "deletedRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1OwnerEntity"
+          }
+        }
+      }
+    },
+    "v1OwnersViewEntity": {
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ownerName": {
+          "type": "string"
+        },
+        "ownerImage": {
+          "type": "string"
+        },
+        "ownerEmail": {
+          "type": "string"
+        },
+        "ownerPhone": {
+          "type": "string"
+        },
+        "ownerNationalId": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        },
+        "properties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertiesViewEntity"
+          }
+        }
+      }
+    },
+    "v1PaymentEntity": {
+      "type": "object",
+      "properties": {
+        "paymentId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "paymentCode": {
+          "type": "string"
+        },
+        "customerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "paymentMethodId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "paymentStatusId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservationId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "customerName": {
+          "type": "string"
+        },
+        "customerPhone": {
+          "type": "string"
+        },
+        "customerEmail": {
+          "type": "string"
+        },
+        "cardNumber": {
+          "type": "string"
+        },
+        "expiryYear": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "expiryMonth": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cvv": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amount": {
+          "type": "number",
+          "format": "float"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "title": "Reservation message"
+    },
+    "v1PaymentMethodsInputListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PaymentMethodsInputListRow"
+          }
+        }
+      }
+    },
+    "v1PaymentMethodsInputListRow": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "label": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "paymentMethodTemplate": {
+          "type": "string"
+        },
+        "paymentMethodText": {
+          "type": "string"
+        }
+      }
+    },
+    "v1PaymentsListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "#/definitions/v1ListDataOptions"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PaymentsListRow"
+          }
+        },
+        "deletedRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PaymentsListRow"
+          }
+        }
+      }
+    },
+    "v1PaymentsListRow": {
+      "type": "object",
+      "properties": {
+        "paymentId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "paymentMethodId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "paymentMethod": {
+          "type": "string"
+        },
+        "paymentStatusId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "paymentStatus": {
+          "type": "string"
+        },
+        "reservationId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "customerName": {
+          "type": "string"
+        },
+        "customerPhone": {
+          "type": "string"
+        },
+        "customerEmail": {
+          "type": "string"
+        },
+        "paymentCode": {
+          "type": "string"
+        },
+        "cardNumber": {
+          "type": "string"
+        },
+        "expiryYear": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "expiryMonth": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cvv": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amount": {
+          "type": "number",
+          "format": "float"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "v1PaymentsViewEntity": {
+      "type": "object",
+      "properties": {
+        "paymentId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "paymentCode": {
+          "type": "string"
+        },
+        "customerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "paymentMethodId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "paymentStatusId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservationId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "customerName": {
+          "type": "string"
+        },
+        "customerPhone": {
+          "type": "string"
+        },
+        "customerEmail": {
+          "type": "string"
+        },
+        "ownerEmail": {
+          "type": "string"
+        },
+        "cardNumber": {
+          "type": "string"
+        },
+        "expiryYear": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "expiryMonth": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cvv": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amount": {
+          "type": "number",
+          "format": "float"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "title": "Reservation message"
+    },
+    "v1Permission": {
+      "type": "object",
+      "properties": {
+        "permissionId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "permissionName": {
+          "type": "string"
+        },
+        "permissionFunction": {
+          "type": "string"
+        },
+        "permissionDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "v1PermissionGroup": {
+      "type": "object",
+      "properties": {
+        "permissionGroup": {
+          "type": "string"
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Permission"
+          }
+        }
+      }
+    },
+    "v1PermissionsListResponse": {
+      "type": "object",
+      "properties": {
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PermissionGroup"
+          }
+        }
+      }
+    },
+    "v1PropertiesListAmenity": {
+      "type": "object",
+      "properties": {
+        "amenityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amenityName": {
+          "type": "string"
+        },
+        "amenityValueType": {
+          "type": "string"
+        },
+        "propertiesCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1PropertiesListAmenityGroup": {
+      "type": "object",
+      "properties": {
+        "amenityGroupName": {
+          "type": "string"
+        },
+        "amenityGroupIcon": {
+          "type": "string"
+        },
+        "amenities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertiesListAmenity"
+          }
+        }
+      }
+    },
+    "v1PropertiesListCity": {
+      "type": "object",
+      "properties": {
+        "cityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cityName": {
+          "type": "string"
+        },
+        "cityImage": {
+          "type": "string"
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertiesListLocation"
+          }
+        }
+      }
+    },
+    "v1PropertiesListFilteredResponse": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertiesListFilteredRow"
+          }
+        },
+        "similarProperties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertiesListFilteredRow"
+          }
+        }
+      }
+    },
+    "v1PropertiesListFilteredRow": {
+      "type": "object",
+      "properties": {
+        "propertyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyName": {
+          "type": "string"
+        },
+        "propertyImage": {
+          "type": "string"
+        },
+        "starRating": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "locationName": {
+          "type": "string"
+        },
+        "locationUrl": {
+          "type": "string"
+        },
+        "minimumPrice": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "v1PropertiesListLocation": {
+      "type": "object",
+      "properties": {
+        "locationId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "locationName": {
+          "type": "string"
+        },
+        "locationImage": {
+          "type": "string"
+        },
+        "cityId": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1PropertiesListPropertyType": {
+      "type": "object",
+      "properties": {
+        "propertyTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyTypeName": {
+          "type": "string"
+        },
+        "propertyTypeIcon": {
+          "type": "string"
+        }
+      }
+    },
+    "v1PropertiesListReservableUnitType": {
+      "type": "object",
+      "properties": {
+        "reservableUnitTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservableUnitTypeName": {
+          "type": "string"
+        }
+      }
+    },
+    "v1PropertiesListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "#/definitions/v1ListDataOptions"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertiesViewEntity"
+          }
+        },
+        "deletedRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertiesViewEntity"
+          }
+        }
+      }
+    },
+    "v1PropertiesListWithFiltersResponse": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertiesListFilteredRow"
+          }
+        },
+        "similarProperties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertiesListFilteredRow"
+          }
+        },
+        "cities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertiesListCity"
+          }
+        },
+        "propertyTypes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertiesListPropertyType"
+          }
+        },
+        "reservableUnitTypes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertiesListReservableUnitType"
+          }
+        },
+        "amenityGroups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertiesListAmenityGroup"
+          }
+        }
+      }
+    },
+    "v1PropertiesViewEntity": {
+      "type": "object",
+      "properties": {
+        "propertyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyName": {
+          "type": "string"
+        },
+        "addressLine": {
+          "type": "string"
+        },
+        "starRating": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "locationId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "locationName": {
+          "type": "string"
+        },
+        "locationImage": {
+          "type": "string"
+        },
+        "locationUrl": {
+          "type": "string"
+        },
+        "propertyTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyTypeName": {
+          "type": "string"
+        },
+        "propertyTypeIcon": {
+          "type": "string"
+        },
+        "compoundId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "compoundName": {
+          "type": "string"
+        },
+        "propertyCategoryId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyCategoryName": {
+          "type": "string"
+        },
+        "propertyImages": {
+          "type": "string"
+        },
+        "propertyDescription": {
+          "type": "string"
+        },
+        "checkinTimeFrom": {
+          "type": "string"
+        },
+        "checkinTimeTo": {
+          "type": "string"
+        },
+        "checkoutTimeFrom": {
+          "type": "string"
+        },
+        "checkoutTimeTo": {
+          "type": "string"
+        },
+        "ownerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ownerName": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        },
+        "amenities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1UnitAmenitiesViewEntity"
+          }
+        }
+      }
+    },
+    "v1PropertyCreateUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "propertyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyName": {
+          "type": "string"
+        },
+        "addressLine": {
+          "type": "string"
+        },
+        "starRating": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "locationUrl": {
+          "type": "string"
+        },
+        "propertyTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "locationId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "compoundId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ownerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyCategoryId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyImage": {
+          "type": "string"
+        },
+        "propertyImages": {
+          "type": "string"
+        },
+        "propertyDescription": {
+          "type": "string"
+        },
+        "checkinTimeFrom": {
+          "type": "string"
+        },
+        "checkinTimeTo": {
+          "type": "string"
+        },
+        "checkoutTimeFrom": {
+          "type": "string"
+        },
+        "checkoutTimeTo": {
+          "type": "string"
+        }
+      }
+    },
+    "v1PropertyEntity": {
+      "type": "object",
+      "properties": {
+        "propertyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyName": {
+          "type": "string"
+        },
+        "addressLine": {
+          "type": "string"
+        },
+        "starRating": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "locationId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "locationUrl": {
+          "type": "string"
+        },
+        "propertyTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "compoundId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyImages": {
+          "type": "string"
+        },
+        "propertyDescription": {
+          "type": "string"
+        },
+        "checkinTimeFrom": {
+          "type": "string"
+        },
+        "checkinTimeTo": {
+          "type": "string"
+        },
+        "checkoutTimeFrom": {
+          "type": "string"
+        },
+        "checkoutTimeTo": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "v1PropertyFindFilteredAmenity": {
+      "type": "object",
+      "properties": {
+        "amenityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amenityName": {
+          "type": "string"
+        },
+        "amenityIcon": {
+          "type": "string"
+        },
+        "amenityValue": {
+          "type": "string"
+        }
+      }
+    },
+    "v1PropertyFindFilteredReservableUnit": {
+      "type": "object",
+      "properties": {
+        "propertyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservableUnitId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ratePlanId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservableUnitName": {
+          "type": "string"
+        },
+        "reservableUnitImage": {
+          "type": "string"
+        },
+        "ratePlan": {
+          "type": "string"
+        },
+        "inventoryIds": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "prices": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "ratePlanPolicies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "price": {
+          "type": "number",
+          "format": "float"
+        },
+        "persons": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "availableCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservationKey": {
+          "type": "string"
+        },
+        "bathroomsCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "roomsCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "payInAdvance": {
+          "type": "boolean"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1PropertyFindFilteredResponse": {
+      "type": "object",
+      "properties": {
+        "propertyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyName": {
+          "type": "string"
+        },
+        "propertyImage": {
+          "type": "string"
+        },
+        "starRating": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "locationName": {
+          "type": "string"
+        },
+        "locationImage": {
+          "type": "string"
+        },
+        "propertyCategoryName": {
+          "type": "string"
+        },
+        "propertyCategoryId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "locationUrl": {
+          "type": "string"
+        },
+        "priceFrom": {
+          "type": "number",
+          "format": "float"
+        },
+        "propertyDescription": {
+          "type": "string"
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reviews": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertyFindFilteredReview"
+          }
+        },
+        "reservableUnits": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertyFindFilteredReservableUnit"
+          }
+        },
+        "amenities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertyFindFilteredAmenity"
+          }
+        }
+      }
+    },
+    "v1PropertyFindFilteredReview": {
+      "type": "object",
+      "properties": {
+        "propertyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "customerName": {
+          "type": "string"
+        },
+        "customerImage": {
+          "type": "string"
+        },
+        "rate": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "review": {
+          "type": "string"
+        }
+      }
+    },
+    "v1PropertyFindFilters": {
+      "type": "object",
+      "properties": {
+        "checkinDate": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "checkoutDate": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservableUnitTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minimumPrice": {
+          "type": "number",
+          "format": "float"
+        },
+        "maximumPrice": {
+          "type": "number",
+          "format": "float"
+        },
+        "reservableUnitAmenities": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "personsCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1PropertyFindForUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "property": {
+          "$ref": "#/definitions/v1PropertyCreateUpdateRequest"
+        },
+        "reservableUnits": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ReservableUnitsViewEntity"
+          }
+        }
+      }
+    },
+    "v1PropertyFindReservableUnits": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "#/definitions/v1ListDataOptions"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ReservableUnitsViewEntity"
+          }
+        },
+        "deletedRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ReservableUnitsViewEntity"
+          }
+        }
+      }
+    },
+    "v1PropertyFindResponse": {
+      "type": "object",
+      "properties": {
+        "property": {
+          "$ref": "#/definitions/v1PropertiesViewEntity"
+        },
+        "reservableUnits": {
+          "$ref": "#/definitions/v1PropertyFindReservableUnits"
+        }
+      }
+    },
+    "v1PropertyTypeEntity": {
+      "type": "object",
+      "properties": {
+        "propertyTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyTypeName": {
+          "type": "string"
+        },
+        "propertyTypeIcon": {
+          "type": "string"
+        },
+        "propertyCategoryId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "v1PropertyTypeUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "propertyTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyTypeName": {
+          "type": "string"
+        },
+        "propertyTypeIcon": {
+          "type": "string"
+        },
+        "propertyCategoryId": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1PropertyTypesListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "#/definitions/v1ListDataOptions"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertyTypesViewEntity"
+          }
+        },
+        "deletedRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertyTypesViewEntity"
+          }
+        }
+      }
+    },
+    "v1PropertyTypesViewEntity": {
+      "type": "object",
+      "properties": {
+        "propertyTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyTypeName": {
+          "type": "string"
+        },
+        "propertyTypeIcon": {
+          "type": "string"
+        },
+        "propertyCategoryId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyCategoryName": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        },
+        "propertiesCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "properties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertiesViewEntity"
+          }
+        }
+      }
+    },
+    "v1RatePlanCreateUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "ratePlanId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ratePlanTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ratePlanName": {
+          "type": "string"
+        },
+        "payInAdvance": {
+          "type": "boolean"
+        },
+        "isIncreasingPrice": {
+          "type": "boolean"
+        },
+        "flexibleToAmmend": {
+          "type": "boolean"
+        },
+        "daysBeforeCheckin": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cancelationPolicyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minimumStay": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maximumStay": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "parentRatePlanId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "hasParentRatePlan": {
+          "type": "boolean"
+        },
+        "isRelatedPricePercent": {
+          "type": "boolean"
+        },
+        "relatedPriceValue": {
+          "type": "number",
+          "format": "float"
+        },
+        "color": {
+          "type": "string"
+        },
+        "isBreakfastIncluded": {
+          "type": "boolean"
+        },
+        "isDinnerIncluded": {
+          "type": "boolean"
+        },
+        "isLunchIncluded": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1RatePlanEntity": {
+      "type": "object",
+      "properties": {
+        "ratePlanId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ratePlanTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ratePlanName": {
+          "type": "string"
+        },
+        "payInAdvance": {
+          "type": "boolean"
+        },
+        "isIncreasingPrice": {
+          "type": "boolean"
+        },
+        "flexibleToAmmend": {
+          "type": "boolean"
+        },
+        "daysBeforeCheckin": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cancelationPolicyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minimumStay": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maximumStay": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "parentRatePlanId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isRelatedPricePercent": {
+          "type": "boolean"
+        },
+        "relatedPriceValue": {
+          "type": "number",
+          "format": "float"
+        },
+        "isBreakfastIncluded": {
+          "type": "boolean"
+        },
+        "isDinnerIncluded": {
+          "type": "boolean"
+        },
+        "isLunchIncluded": {
+          "type": "boolean"
+        },
+        "color": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "v1RatePlanFindResponse": {
+      "type": "object",
+      "properties": {
+        "cancelationPolicyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cancelationPolicyName": {
+          "type": "string"
+        },
+        "daysBeforeCancel": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isCancelationFeePercent": {
+          "type": "boolean"
+        },
+        "cancelationFee": {
+          "type": "number",
+          "format": "float"
+        },
+        "ratePlanTypeName": {
+          "type": "string"
+        },
+        "ratePlanTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ratePlanName": {
+          "type": "string"
+        },
+        "payInAdvance": {
+          "type": "boolean"
+        },
+        "color": {
+          "type": "string"
+        },
+        "isIncreasingPrice": {
+          "type": "boolean"
+        },
+        "flexibleToAmmend": {
+          "type": "boolean"
+        },
+        "daysBeforeCheckin": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minimumStay": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maximumStay": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isRelatedPricePercent": {
+          "type": "boolean"
+        },
+        "relatedPriceValue": {
+          "type": "number",
+          "format": "float"
+        },
+        "isBreakfastIncluded": {
+          "type": "boolean"
+        },
+        "isDinnerIncluded": {
+          "type": "boolean"
+        },
+        "isLunchIncluded": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "ratePlans": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1RatePlanFindResponseRatePlan"
+          }
+        },
+        "reservableUnits": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1RatePlanFindResponseReservableUnit"
+          }
+        }
+      }
+    },
+    "v1RatePlanFindResponseRatePlan": {
+      "type": "object",
+      "properties": {
+        "ratePlanId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ratePlanName": {
+          "type": "string"
+        }
+      }
+    },
+    "v1RatePlanFindResponseReservableUnit": {
+      "type": "object",
+      "properties": {
+        "reservableUnitId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservableUnitName": {
+          "type": "string"
+        },
+        "propertyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyName": {
+          "type": "string"
+        }
+      }
+    },
+    "v1RatePlanTypeCreateUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "ratePlanTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ratePlanTypeName": {
+          "type": "string"
+        },
+        "payInAdvance": {
+          "type": "boolean"
+        },
+        "isIncreasingPrice": {
+          "type": "boolean"
+        },
+        "flexibleToAmmend": {
+          "type": "boolean"
+        },
+        "daysBeforeCheckin": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cancelationPolicyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minimumStay": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maximumStay": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isBreakfastIncluded": {
+          "type": "boolean"
+        },
+        "isDinnerIncluded": {
+          "type": "boolean"
+        },
+        "isLunchIncluded": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1RatePlanTypeEntity": {
+      "type": "object",
+      "properties": {
+        "ratePlanTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ratePlanTypeName": {
+          "type": "string"
+        },
+        "payInAdvance": {
+          "type": "boolean"
+        },
+        "isIncreasingPrice": {
+          "type": "boolean"
+        },
+        "flexibleToAmmend": {
+          "type": "boolean"
+        },
+        "daysBeforeCheckin": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cancelationPolicyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minimumStay": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maximumStay": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isBreakfastIncluded": {
+          "type": "boolean"
+        },
+        "isDinnerIncluded": {
+          "type": "boolean"
+        },
+        "isLunchIncluded": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "title": "Rate Plan Type message"
+    },
+    "v1RatePlanTypeFindResponse": {
+      "type": "object",
+      "properties": {
+        "cancelationPolicyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cancelationPolicyName": {
+          "type": "string"
+        },
+        "daysBeforeCancel": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isCancelationFeePercent": {
+          "type": "boolean"
+        },
+        "cancelationFee": {
+          "type": "number",
+          "format": "float"
+        },
+        "ratePlanTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ratePlanTypeName": {
+          "type": "string"
+        },
+        "payInAdvance": {
+          "type": "boolean"
+        },
+        "isIncreasingPrice": {
+          "type": "boolean"
+        },
+        "flexibleToAmmend": {
+          "type": "boolean"
+        },
+        "daysBeforeCheckin": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minimumStay": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maximumStay": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isBreakfastIncluded": {
+          "type": "boolean"
+        },
+        "isDinnerIncluded": {
+          "type": "boolean"
+        },
+        "isLunchIncluded": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "ratePlans": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1RatePlanTypeFindResponseRatePlan"
+          }
+        }
+      }
+    },
+    "v1RatePlanTypeFindResponseRatePlan": {
+      "type": "object",
+      "properties": {
+        "ratePlanId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ratePlanName": {
+          "type": "string"
+        }
+      }
+    },
+    "v1RatePlanTypesListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "#/definitions/v1ListDataOptions"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1RatePlanTypeEntity"
+          }
+        },
+        "deletedRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1RatePlanTypeEntity"
+          }
+        }
+      }
+    },
+    "v1RatePlansListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "#/definitions/v1ListDataOptions"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1RatePlanEntity"
+          }
+        },
+        "deletedRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1RatePlanEntity"
+          }
+        }
+      }
+    },
+    "v1RedirectRouteParam": {
+      "type": "object",
+      "properties": {
+        "paramName": {
+          "type": "string"
+        },
+        "responseValueKey": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ReservableUnitDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "deletedRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ReservableUnitEntity"
+          }
+        }
+      }
+    },
+    "v1ReservableUnitEntity": {
+      "type": "object",
+      "properties": {
+        "reservableUnitId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservableUnitName": {
+          "type": "string"
+        },
+        "reservableUnitDescription": {
+          "type": "string"
+        },
+        "minimumGuestsNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maximumGuestsNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "unitArea": {
+          "type": "number",
+          "format": "float"
+        },
+        "reservableUnitTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "bathroomsCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isClosed": {
+          "type": "boolean"
+        },
+        "reservableUnitImages": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ReservableUnitFindFilteredResponse": {
+      "type": "object",
+      "properties": {
+        "propertyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservableUnitId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ratePlanId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservableUnitName": {
+          "type": "string"
+        },
+        "reservableUnitDescription": {
+          "type": "string"
+        },
+        "reservableUnitImage": {
+          "type": "string"
+        },
+        "reservableUnitImages": {
+          "type": "string"
+        },
+        "inventoryIds": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "ratePlanName": {
+          "type": "string"
+        },
+        "payInAdvance": {
+          "type": "boolean"
+        },
+        "flexibleToAmend": {
+          "type": "boolean"
+        },
+        "minimumStay": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maximumStay": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isBreakfastIncluded": {
+          "type": "boolean"
+        },
+        "isDinnerIncluded": {
+          "type": "boolean"
+        },
+        "isLunchIncluded": {
+          "type": "boolean"
+        },
+        "cancelationPolicyName": {
+          "type": "string"
+        },
+        "daysBeforeCancel": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "availableCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservationKey": {
+          "type": "string"
+        },
+        "disabledDates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ratePlanPolicies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "amenities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1PropertyFindFilteredAmenity"
+          }
+        },
+        "prices": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ReservaleUnitFindFilteredPrice"
+          }
+        }
+      }
+    },
+    "v1ReservableUnitRatePlanViewEntity": {
+      "type": "object",
+      "properties": {
+        "reservableUnitRatePlanId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ratePlanId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isRelatedPricePercent": {
+          "type": "boolean"
+        },
+        "relatedPriceValue": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "v1ReservableUnitRoom": {
+      "type": "object",
+      "properties": {
+        "reservableUnitRoomId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "beds": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ReservableUnitRoomBed"
+          }
+        }
+      }
+    },
+    "v1ReservableUnitRoomBed": {
+      "type": "object",
+      "properties": {
+        "bedTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "bedCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1ReservableUnitRoomBedEntity": {
+      "type": "object",
+      "properties": {
+        "reservableUnitRoomId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "bedTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "bedCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1ReservableUnitRoomBedsCreateUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "beds": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ReservableUnitRoomBedEntity"
+          }
+        }
+      }
+    },
+    "v1ReservableUnitRoomsViewEntity": {
+      "type": "object",
+      "properties": {
+        "reservableUnitRoomId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservableUnitRoomName": {
+          "type": "string"
+        },
+        "reservableUnitRoomImages": {
+          "type": "string"
+        },
+        "reservableUnitId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "beds": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ReservableUnitRoomBedEntity"
+          }
+        }
+      }
+    },
+    "v1ReservableUnitTypeInputListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ReservableUnitTypeSelectInputOption"
+          }
+        }
+      }
+    },
+    "v1ReservableUnitTypeSelectInputOption": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "label": {
+          "type": "string"
+        },
+        "roomsCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1ReservableUnitsListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "#/definitions/v1ListDataOptions"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ReservableUnitsListRow"
+          }
+        },
+        "deletedRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ReservableUnitsListRow"
+          }
+        }
+      }
+    },
+    "v1ReservableUnitsListRow": {
+      "type": "object",
+      "properties": {
+        "reservableUnitId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservableUnitName": {
+          "type": "string"
+        },
+        "reservableUnitDescription": {
+          "type": "string"
+        },
+        "minimumGuestsNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maximumGuestsNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "unitArea": {
+          "type": "number",
+          "format": "float"
+        },
+        "reservableUnitTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "basePrice": {
+          "type": "number",
+          "format": "float"
+        },
+        "reservableUnitTypeName": {
+          "type": "string"
+        },
+        "roomsCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyCategoryId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyCategoryName": {
+          "type": "string"
+        },
+        "propertyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "bathroomsCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isClosed": {
+          "type": "boolean"
+        },
+        "reservableUnitImages": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ReservableUnitsViewEntity": {
+      "type": "object",
+      "properties": {
+        "reservableUnitId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservableUnitName": {
+          "type": "string"
+        },
+        "reservableUnitDescription": {
+          "type": "string"
+        },
+        "minimumGuestsNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maximumGuestsNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "unitArea": {
+          "type": "number",
+          "format": "float"
+        },
+        "reservableUnitTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservableUnitTypeName": {
+          "type": "string"
+        },
+        "basePrice": {
+          "type": "number",
+          "format": "float"
+        },
+        "propertyCategoryId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyCategoryName": {
+          "type": "string"
+        },
+        "propertyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "roomsCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "bathroomsCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "isClosed": {
+          "type": "boolean"
+        },
+        "reservableUnitImages": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        },
+        "rooms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ReservableUnitRoomsViewEntity"
+          }
+        },
+        "amenities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1UnitAmenitiesViewEntity"
+          }
+        },
+        "ratePlans": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ReservableUnitRatePlanViewEntity"
+          }
+        }
+      },
+      "title": "int32 reservable_unit_id = 1;\n  string reservable_unit_name = 2;\n  string reservable_unit_description = 3;\n  int32 minimum_guests_number = 5;\n  int32 maximum_guests_number = 6;\n  float unit_area = 7;\n  int32 reservable_unit_type_id = 8;\n  string reservable_unit_type_name = 9;\n  float base_price = 10;\n  int32 property_category_id = 11;\n  string property_category_name = 12;\n  int32 property_id = 13;\n  int32 rooms_count = 14;\n  int32 bathrooms_count = 15;\n  bool is_closed = 16;\n  string reservable_unit_images = 17;\n  string created_at = 18;\n  string updated_at = 19;\n  string deleted_at = 20;\n  repeated ReservableUnitRoomsViewEntity rooms = 21;\n  repeated UnitAmenitiesViewEntity amenities = 22;"
+    },
+    "v1ReservaleUnitFindFilteredPrice": {
+      "type": "object",
+      "properties": {
+        "persons": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "price": {
+          "type": "number",
+          "format": "float"
+        },
+        "prices": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "float"
+          }
+        }
+      }
+    },
+    "v1ReservationAction": {
+      "type": "object",
+      "properties": {
+        "actionName": {
+          "type": "string"
+        },
+        "reservationStatusId": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1ReservationCreateReservableUnit": {
+      "type": "object",
+      "properties": {
+        "reservableUnitId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ratePlanId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "persons": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1ReservationDetailsViewEntity": {
+      "type": "object",
+      "properties": {
+        "reservableUnitId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ratePlanId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservableUnitName": {
+          "type": "string"
+        },
+        "reservableUnitImage": {
+          "type": "string"
+        },
+        "ratePlan": {
+          "type": "string"
+        },
+        "inventoryIds": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "prices": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "ratePlanPolicies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "price": {
+          "type": "number",
+          "format": "float"
+        },
+        "persons": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maxCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservationKey": {
+          "type": "string"
+        },
+        "bathroomsCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "roomsCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "payInAdvance": {
+          "type": "boolean"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1ReservationsListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "#/definitions/v1ListDataOptions"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ReservationsListRow"
+          }
+        },
+        "deletedRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ReservationsListRow"
+          }
+        }
+      }
+    },
+    "v1ReservationsListRow": {
+      "type": "object",
+      "properties": {
+        "reservationId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservationCode": {
+          "type": "string"
+        },
+        "dateFrom": {
+          "type": "string"
+        },
+        "dateTo": {
+          "type": "string"
+        },
+        "subtotal": {
+          "type": "number",
+          "format": "float"
+        },
+        "totalTax": {
+          "type": "number",
+          "format": "float"
+        },
+        "totalAmount": {
+          "type": "number",
+          "format": "float"
+        },
+        "cancelationFee": {
+          "type": "number",
+          "format": "float"
+        },
+        "paidAmount": {
+          "type": "number",
+          "format": "float"
+        },
+        "children": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "adults": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservationStatusId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "reservationStatus": {
+          "type": "string"
+        },
+        "customerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "customerName": {
+          "type": "string"
+        },
+        "customerEmail": {
+          "type": "string"
+        },
+        "customerPhone": {
+          "type": "string"
+        },
+        "ownerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ownerName": {
+          "type": "string"
+        },
+        "representativeOwnerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "representativeOwnerName": {
+          "type": "string"
+        },
+        "propertyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyName": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updateAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ReservationsViewEntity": {
+      "type": "object",
+      "properties": {
+        "adults": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "dateTo": {
+          "type": "string"
+        },
+        "children": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ownerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "subtotal": {
+          "type": "number",
+          "format": "float"
+        },
+        "dateFrom": {
+          "type": "string"
+        },
+        "totalTax": {
+          "type": "number",
+          "format": "float"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "dateToId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "deletedAt": {
+          "type": "string"
+        },
+        "ownerName": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "customerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "paidAmount": {
+          "type": "number",
+          "format": "float"
+        },
+        "propertyId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "dateFromId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "customerName": {
+          "type": "string"
+        },
+        "representativeOwnerName": {
+          "type": "string"
+        },
+        "propertyName": {
+          "type": "string"
+        },
+        "propertyImage": {
+          "type": "string"
+        },
+        "reservationId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cancelationFee": {
+          "type": "number",
+          "format": "float"
+        },
+        "reservationCode": {
+          "type": "string"
+        },
+        "reservationStatus": {
+          "type": "string"
+        },
+        "customerNationalId": {
+          "type": "string"
+        },
+        "reservationStatusId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "representativeOwnerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "representativeOwnerEmail": {
+          "type": "string"
+        },
+        "ownerEmail": {
+          "type": "string"
+        },
+        "customerEmail": {
+          "type": "string"
+        },
+        "tense": {
+          "type": "string"
+        },
+        "totalAmount": {
+          "type": "number",
+          "format": "float"
+        },
+        "payInAdvance": {
+          "type": "boolean"
+        },
+        "nonRefundable": {
+          "type": "boolean"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ReservationAction"
+          }
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ReservationDetailsViewEntity"
+          }
+        }
+      },
+      "title": "Reservation message"
+    },
+    "v1Role": {
+      "type": "object",
+      "properties": {
+        "roleId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "roleName": {
+          "type": "string"
+        },
+        "roleDescription": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "v1RoleCreateResponse": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "$ref": "#/definitions/v1Role"
+        }
+      }
+    },
+    "v1RoleDeleteRestoreResponse": {
+      "type": "object"
+    },
+    "v1RoleUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "roleId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "roleName": {
+          "type": "string"
+        },
+        "roleDescription": {
+          "type": "string"
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      }
+    },
+    "v1RoleUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "$ref": "#/definitions/v1Role"
+        }
+      }
+    },
+    "v1RolesInputListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1SelectInputOption"
+          }
+        }
+      }
+    },
+    "v1RolesListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "#/definitions/v1ListDataOptions"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1RolesListRow"
+          }
+        },
+        "deletedRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1RolesListRow"
+          }
+        }
+      }
+    },
+    "v1RolesListRow": {
+      "type": "object",
+      "properties": {
+        "roleId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "roleName": {
+          "type": "string"
+        },
+        "roleDescription": {
+          "type": "string"
+        },
+        "permissionsCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "usersCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "preventDelete": {
+          "type": "boolean"
+        },
+        "preventUpdate": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "v1RouteQuery": {
+      "type": "object",
+      "properties": {
+        "queryName": {
+          "type": "string"
+        },
+        "queryValue": {
+          "type": "string"
+        }
+      }
+    },
+    "v1SelectInputOption": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "label": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "v1SelectInputOptionWithGroup": {
+      "type": "object",
+      "properties": {
+        "groupIcon": {
+          "type": "string"
+        },
+        "groupName": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1SelectInputOption"
+          }
+        }
+      }
+    },
+    "v1SettingsFindForUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "settings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1SettingsFindForUpdateRow"
+          }
+        }
+      }
+    },
+    "v1SettingsFindForUpdateRow": {
+      "type": "object",
+      "properties": {
+        "settingKey": {
+          "type": "string"
+        },
+        "settingValue": {
+          "type": "string"
+        },
+        "settingType": {
+          "type": "string"
+        }
+      }
+    },
+    "v1SettingsUpdateRequestRow": {
+      "type": "object",
+      "properties": {
+        "settingKey": {
+          "type": "string"
+        },
+        "settingValue": {
+          "type": "string"
+        }
+      }
+    },
+    "v1SettingsUpdateResponse": {
+      "type": "object"
+    },
+    "v1SideBarItem": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "labelAr": {
+          "type": "string"
+        },
+        "iconId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "route": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1SideBarItem"
+          }
+        }
+      }
+    },
+    "v1TaxTemplate": {
+      "type": "object",
+      "properties": {
+        "taxTemplateId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "taxTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "rate": {
+          "type": "number",
+          "format": "float"
+        },
+        "descEn": {
+          "type": "string"
+        },
+        "descAr": {
+          "type": "string"
+        }
+      }
+    },
+    "v1TaxTemplatesListResponse": {
+      "type": "object",
+      "properties": {
+        "taxes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1TaxTemplate"
+          }
+        }
+      }
+    },
+    "v1UnitAmenitiesCreateUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "amenities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1UnitAmenityEntity"
+          }
+        }
+      }
+    },
+    "v1UnitAmenitiesViewEntity": {
+      "type": "object",
+      "properties": {
+        "unitId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amenityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amenityValue": {
+          "type": "string"
+        },
+        "unitType": {
+          "type": "string"
+        },
+        "amenityName": {
+          "type": "string"
+        },
+        "amenityIcon": {
+          "type": "string"
+        },
+        "amenityValueType": {
+          "type": "string"
+        }
+      }
+    },
+    "v1UnitAmenity": {
+      "type": "object",
+      "properties": {
+        "amenityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amenityValue": {
+          "type": "string"
+        }
+      }
+    },
+    "v1UnitAmenityEntity": {
+      "type": "object",
+      "properties": {
+        "unitId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "unitType": {
+          "type": "string"
+        },
+        "amenityId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "amenityValue": {
+          "type": "string"
+        }
+      }
+    },
+    "v1UpdateHandler": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "redirectRoute": {
+          "type": "string"
+        },
+        "routeName": {
+          "type": "string"
+        },
+        "routeQuery": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1RouteQuery"
+          }
+        },
+        "endpoint": {
+          "type": "string"
+        },
+        "findEndpoint": {
+          "type": "string"
+        },
+        "findRequestProperty": {
+          "type": "string"
+        }
+      }
+    },
+    "v1UploadFileRequest": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "bucketName": {
+          "type": "string"
+        },
+        "reader": {
+          "type": "string",
+          "format": "byte"
+        },
+        "fileType": {
+          "type": "string"
+        }
+      }
+    },
+    "v1UploadFileResponse": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        }
+      }
+    },
+    "v1UserCreateUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "userEmail": {
+          "type": "string"
+        },
+        "userCode": {
+          "type": "string"
+        },
+        "userPhone": {
+          "type": "string"
+        },
+        "userImage": {
+          "type": "string"
+        },
+        "userPassword": {
+          "type": "string"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      }
+    },
+    "v1UserEntity": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "userImage": {
+          "type": "string"
+        },
+        "userEmail": {
+          "type": "string",
+          "title": "Unique"
+        },
+        "userPhone": {
+          "type": "string",
+          "title": "Unique"
+        },
+        "userPassword": {
+          "type": "string"
+        },
+        "preventDelete": {
+          "type": "boolean"
+        },
+        "preventUpdate": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "deletedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "v1UserLoginResponse": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/v1UserEntity"
+        },
+        "loginInfo": {
+          "$ref": "#/definitions/v1LoginInfo"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1UserRole"
+          }
+        },
+        "sideBar": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1SideBarItem"
+          }
+        }
+      }
+    },
+    "v1UserRole": {
+      "type": "object",
+      "properties": {
+        "roleId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "roleName": {
+          "type": "string"
+        }
+      }
+    },
+    "v1UsersListResponse": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "$ref": "#/definitions/v1ListDataOptions"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1UserEntity"
+          }
+        },
+        "deletedRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1UserEntity"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+version: v1
+name: buf.build/ahmeddarwish/abc-api
+
+deps:
+  - buf.build/bufbuild/protovalidate
+
+lint:
+  use:
+    - DEFAULT
+breaking:
+  use:
+    - FILE
